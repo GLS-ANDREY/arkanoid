@@ -1,4 +1,4 @@
-import pygame, time
+import pygame, time, random
 from pygame import key, display, event, draw, image, transform
 
 pygame.init()
@@ -44,24 +44,28 @@ while 10 == 10:
         plat.right = 1200
 
     sharik.x += speed_x
-    if sharik.right > 1200:
-        sharik.right = 1200
-        speed_x = -7
     if sharik.left < 0:
         sharik.left = 0
-        speed_x = 7
+        speed_x = -speed_x
+    if sharik.right > 1200:
+        sharik.right = 1200
+        speed_x = -speed_x
     sharik.y += speed_y
     if sharik.bottom > 800:
         sharik.bottom = 800
+        print("GAME_OVER")
+        exit()
         speed_y = -7
     if sharik.top < 0:
         sharik.top = 0
         speed_y = 7
 
     volt = plat.colliderect(sharik)
-    print(volt)
     if volt == 1:
         speed_y = -7
+        sharik.bottom = plat.top
+        speed_x = random.randint(-15,15)
+
     # Рисуем кадр
     okno.blit(fon, [0, 0])
     okno.blit(platforma, [plat.x, plat.y], [0, 750, plat.w, plat.h])
