@@ -2,6 +2,7 @@ import pygame, time, random
 from pygame import key, display, event, draw, image, transform
 
 pygame.init()
+pygame.mouse.set_visible(False)
 key.set_repeat(20)
 okno = display.set_mode([1200, 800])
 
