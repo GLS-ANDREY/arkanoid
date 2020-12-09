@@ -6,7 +6,8 @@ key.set_repeat(20)
 okno = display.set_mode([1200, 800])
 
 # ПОДГОТОВКА МОДЕЛИ
-plat = pygame.Rect(600, 650, 275, 50)
+plat = pygame.Rect(325, 650, 275, 50)
+plat.centerx = 600
 sharik = pygame.Rect(225, 375, 40, 40)
 speed_x = 7
 speed_y = 7
@@ -31,7 +32,9 @@ while 10 == 10:
                 plat.x += 10
         if sobitie.type == pygame.QUIT:
             exit()
-
+        if sobitie.type == pygame.MOUSEMOTION:
+            pos_x = sobitie.pos[0]
+            plat.centerx = pos_x
     # ДВИЖЕНИЕ
 
     if 0 > plat.y:
@@ -53,7 +56,7 @@ while 10 == 10:
     sharik.y += speed_y
     if sharik.bottom > 800:
         sharik.bottom = 800
-        print("GAME_OVER")
+        print("                                                                                                GAME_OVER")
         exit()
         speed_y = -7
     if sharik.top < 0:
@@ -64,7 +67,7 @@ while 10 == 10:
     if volt == 1:
         speed_y = -7
         sharik.bottom = plat.top
-        speed_x = random.randint(-15,15)
+        speed_x = random.randint(-15, 15)
 
     # Рисуем кадр
     okno.blit(fon, [0, 0])
