@@ -6,7 +6,11 @@ plat.centerx = 600
 sharik = pygame.Rect(225, 375, 40, 40)
 speed_x = 7
 speed_y = 7
-
+kubiki = []
+t = range(0,1200,40)
+for paladin in t:
+    kubik_rect = pygame.Rect(paladin, 0, 40, 40)
+    kubiki.append(kubik_rect)
 
 def dvizh():
     global speed_x, speed_y
@@ -31,8 +35,7 @@ def dvizh():
     sharik.y += speed_y
     if sharik.bottom > 800:
         sharik.bottom = 800
-        print(
-            "                                                                                                GAME_OVER")
+        print("                                                                                              GAME_OVER")
         exit()
         speed_y = -7
     if sharik.top < 0:
