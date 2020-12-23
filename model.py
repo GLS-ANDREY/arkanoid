@@ -9,14 +9,18 @@ speed_y = 7
 kubiki = []
 t = [*range(0, 1200, 40)]
 
-kubik_rect = pygame.Rect(600, 400, 40, 40)
-kubiki.append(kubik_rect)
-
-# for otstup_y in [0,40]:
+# kubik_rect = pygame.Rect(185, 400, 40, 40)
+# kubiki.append(kubik_rect)
 #
-#     for paladin in t:
-#         kubik_rect = pygame.Rect(paladin, otstup_y, 40, 40)
-#         kubiki.append(kubik_rect)
+# kubik_rect = pygame.Rect(600, 400, 40, 40)
+# kubiki.append(kubik_rect)
+
+
+for otstup_y in [120,160,200]:
+
+    for paladin in t:
+        kubik_rect = pygame.Rect(paladin, otstup_y, 40, 40)
+        kubiki.append(kubik_rect)
 
 
 def dvizh():
@@ -44,22 +48,43 @@ def dvizh():
 
     volt.sort(reverse=True)
     for nomer in volt:
-        print(nomer)
-        print(kubiki[nomer])
-    #    del kubiki[nomer]
+        k = kubiki[nomer]
+        if sharik.colliderect(k):
+            if speed_x < 0:
+                speed_x = 7
+                sharik.left = k.right
+            elif speed_x > 0:
+                speed_x = -7
+                sharik.right = k.left
+            del kubiki[nomer]
 
-    #sharik.y += speed_y
-    if sharik.bottom > 800:
-        sharik.bottom = 800
-        #print("                                                                                              GAME_OVER")
-        #exit()
-        speed_y = -7
-    if sharik.top < 0:
-        sharik.top = 0
-        speed_y = 7
-
+    sharik.y += speed_y
     volt = plat.colliderect(sharik)
     if volt == 1:
         speed_y = -7
         sharik.bottom = plat.top
         speed_x = random.randint(-15, 15)
+
+
+    if sharik.bottom > 800:
+        sharik.bottom = 800
+        print("                                                                                            GAME_OVER")
+        exit()
+        speed_y = -7
+    if sharik.top < 0:
+        sharik.top = 0
+        speed_y = 7
+
+    volt = sharik.collidelistall(kubiki)
+
+    volt.sort(reverse=True)
+    for nomer in volt:
+        k = kubiki[nomer]
+        if sharik.colliderect(k):
+            if speed_y < 0:
+                speed_y = 7
+                sharik.top = k.bottom
+            elif speed_y > 0:
+                speed_y = -7
+                sharik.bottom = k.top
+            del kubiki[nomer]
