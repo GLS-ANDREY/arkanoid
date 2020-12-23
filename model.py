@@ -1,7 +1,7 @@
 import pygame, random
 
 # ПОДГОТОВКА МОДЕЛИ
-plat = pygame.Rect(325, 650, 275, 50)
+plat = pygame.Rect(325, 650, 250, 36)
 plat.centerx = 600
 sharik = pygame.Rect(225, 375, 40, 40)
 speed_x = 7

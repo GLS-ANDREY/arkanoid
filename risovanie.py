@@ -5,10 +5,10 @@ pygame.init()
 pygame.mouse.set_visible(False)
 okno = display.set_mode([1200, 800])
 
-kubik = image.load("kartynky/kubik.png").convert()
+kubik = image.load("kartynky/kubik_ng.jpg").convert()
 kubik = transform.scale(kubik, [38, 38])
-fon = image.load("kartynky/fon.jpg")
-platforma = image.load("kartynky/platforma.jpg")
+fon = image.load("kartynky/fon_ng.jpg")
+platforma = image.load("kartynky/platforma_ng.png")
 ball = image.load("kartynky/ball.png")
 ball = transform.scale(ball, [40, 40])
 
@@ -16,7 +16,7 @@ ball = transform.scale(ball, [40, 40])
 def risuet_kadr():
     # рисуем кадр
     okno.blit(fon, [0, 0])
-    okno.blit(platforma, [model.plat.x, model.plat.y], [0, 750, model.plat.w, model.plat.h])
+    okno.blit(platforma, [model.plat.x, model.plat.y])
     m = [0, 0, 0]
     draw.rect(okno, m, model.plat, 1)
     # рисуем шарик
