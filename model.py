@@ -9,14 +9,8 @@ speed_y = 7
 kubiki = []
 t = [*range(0, 1200, 40)]
 
-# kubik_rect = pygame.Rect(185, 400, 40, 40)
-# kubiki.append(kubik_rect)
-#
-# kubik_rect = pygame.Rect(600, 400, 40, 40)
-# kubiki.append(kubik_rect)
 
-
-for otstup_y in [120,160,200]:
+for otstup_y in [120, 160, 200]:
 
     for paladin in t:
         kubik_rect = pygame.Rect(paladin, otstup_y, 40, 40)
@@ -64,7 +58,6 @@ def dvizh():
         speed_y = -7
         sharik.bottom = plat.top
         speed_x = random.randint(-15, 15)
-
 
     if sharik.bottom > 800:
         sharik.bottom = 800
